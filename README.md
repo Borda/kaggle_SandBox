@@ -5,7 +5,13 @@
 
 This is a simple template project to Kaggle participation...
 
-Expected content:
+### Expected content:
 - a core package with functionalities used across scripts and notebooks
-- tutorial/experiment notebooks
-- if needed some testing
+- tutorial/experiment notebooks (in _notebook_ folder if needed)
+- [optional] some functionality testing aka unittests or doctests
+
+### What to write here:
+- simple completion description + link
+- shortly what task it is to solve
+- list/link online sources
+- link kernels/submissions
