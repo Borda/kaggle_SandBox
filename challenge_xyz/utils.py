@@ -1,4 +1,3 @@
-
 def demo_func(a: int, b: float) -> float:
     """Demo function.
 
