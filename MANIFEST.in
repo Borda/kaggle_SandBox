@@ -14,15 +14,6 @@ exclude *.sh
 exclude *.toml
 exclude *.svg
 
-# exclude tests from package
-recursive-exclude tests *
-recursive-exclude site *
-exclude tests
-
-# Exclude the documentation files
-recursive-exclude docs *
-exclude docs
-
 # Include the Requirements
 include requirements.txt
 
@@ -35,3 +26,4 @@ prune .github
 prune notebook*
 prune temp*
 prune test*
+prune docs*
