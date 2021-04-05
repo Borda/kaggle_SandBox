@@ -1,7 +1,8 @@
 # Kaggle sandbox
 
-![CI complete testing](https://github.com/Borda/kaggle_sandbox/workflows/CI%20complete%20testing/badge.svg?branch=main&event=push)
-![Check Code formatting](https://github.com/Borda/kaggle_sandbox/workflows/Check%20Code%20formatting/badge.svg?branch=main&event=push)
+[![CI complete testing](https://github.com/Borda/kaggle_sandbox/actions/workflows/ci_testing.yml/badge.svg?branch=main&event=push)](https://github.com/Borda/kaggle_sandbox/actions/workflows/ci_testing.yml)
+[![Code formatting](https://github.com/Borda/kaggle_sandbox/actions/workflows/code-format.yml/badge.svg?branch=main&event=push)](https://github.com/Borda/kaggle_sandbox/actions/workflows/code-format.yml)
+[![codecov](https://codecov.io/gh/Borda/kaggle_sandbox/branch/main/graph/badge.svg)](https://codecov.io/gh/Borda/kaggle_sandbox)
 
 This is a simple template project to Kaggle participation...
 
