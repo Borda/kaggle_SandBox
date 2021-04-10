@@ -16,3 +16,10 @@ This is a simple template project to Kaggle participation...
 - shortly what task it is to solve
 - list/link online sources
 - link kernels/submissions
+
+
+## Showcase: some derived projects
+
+* [Cassava leaf disease classification](https://borda.github.io/kaggle_cassava-leaf-disease)
+* [Plant Pathology](https://borda.github.io/kaggle_plant-pathology) as multi-label classification on apple tree leaf
+
