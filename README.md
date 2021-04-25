@@ -22,4 +22,3 @@ This is a simple template project to Kaggle participation...
 
 * [Cassava leaf disease classification](https://borda.github.io/kaggle_cassava-leaf-disease)
 * [Plant Pathology](https://borda.github.io/kaggle_plant-pathology) as multi-label classification on apple tree leaf
-
