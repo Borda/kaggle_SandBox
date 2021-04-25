@@ -1,0 +1,30 @@
+default_language_version:
+  python: python3.7
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  - repo: local
+    hooks:
+      - id: isort
+        name: imports
+        entry: isort
+        language: system
+        types: [python]
+
+      - id: yapf
+        name: formatting
+        entry: yapf
+        args: [ --parallel ]
+        language: system
+        types: [python]
+
+      - id: flake8
+        name: PEP8
+        entry: flake8
+        language: system
+        types: [python]
