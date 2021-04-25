@@ -14,14 +14,12 @@ repos:
       - id: isort
         repo: https://github.com/PyCQA/isort
         name: imports
-        entry: isort
         language: system
         types: [python]
 
       - id: yapf
         repo: https://github.com/pre-commit/mirrors-yapf
         name: formatting
-        entry: yapf
         args: [ --parallel ]
         language: system
         types: [python]
@@ -29,6 +27,5 @@ repos:
       - id: flake8
         repo: https://github.com/PyCQA/flake8
         name: PEP8
-        entry: flake8
         language: system
         types: [python]
