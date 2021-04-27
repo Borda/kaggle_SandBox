@@ -31,7 +31,7 @@ repos:
       - id: yapf
         name: formatting
         entry: yapf
-        args: [ --parallel ]
+        args: [--parallel]
         language: python
         types: [python]
 
