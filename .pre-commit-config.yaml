@@ -26,7 +26,7 @@ repos:
         require_serial: false
 
   - repo: https://github.com/pre-commit/mirrors-yapf
-    rev: v0.29.0
+    rev: v0.31.0
     hooks:
       - id: yapf
         name: formatting
@@ -36,7 +36,7 @@ repos:
         types: [python]
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 3.9.1
+    rev: 3.9.2
     hooks:
       - id: flake8
         name: PEP8
