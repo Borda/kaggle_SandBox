@@ -59,6 +59,9 @@ jobs:
 #    runs-on: ubuntu-latest
 #    steps:
 #      - uses: actions/checkout@v2
+#        # for private repo - first is the checkout step, which needs to use unlimited fetch depth for pushing
+#        with:
+#          fetch-depth: 0
 #      - uses: actions/setup-python@v2
 #
 #      - name: set PY
