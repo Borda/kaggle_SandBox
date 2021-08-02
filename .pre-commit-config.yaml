@@ -22,8 +22,15 @@ repos:
       - id: check-docstring-first
       - id: detect-private-key
 
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.23.1
+    hooks:
+      - id: pyupgrade
+        args: [--py36-plus]
+        name: Upgrade code
+
   - repo: https://github.com/PyCQA/isort
-    rev: 5.9.1
+    rev: 5.9.3
     hooks:
       - id: isort
         name: imports
@@ -33,6 +40,20 @@ repos:
     hooks:
       - id: yapf
         name: formatting
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.7
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-black
+          - mdformat_frontmatter
+
+  - repo: https://github.com/asottile/yesqa
+    rev: v1.2.3
+    hooks:
+      - id: yesqa
 
   - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
