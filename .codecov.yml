@@ -30,6 +30,10 @@ coverage:
     patch: off
     changes: false
 
+# https://docs.codecov.com/docs/github-checks#disabling-github-checks-patch-annotations
+github_checks:
+    annotations: false
+
 parsers:
   gcov:
     branch_detection:
