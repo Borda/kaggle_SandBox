@@ -24,6 +24,6 @@ This is a simple template project to Kaggle participation...
 
 - [Cassava leaf disease](https://borda.github.io/kaggle_cassava-leaf-disease) as image classification
 - [Plant Pathology](https://borda.github.io/kaggle_plant-pathology) as multi-label classification on apple tree leaf
-- [iMet collection](https://github.com/Borda/kaggle_iMet-collection) as multi-label classification on museum objects
-- [COVID detection](https://github.com/Borda/kaggle_COVID-detection) as object detection on CT (DICOM format) scans
-- [Brain Tumor 3D](https://github.com/Borda/kaggle_brain-tumor-3D) as image classification
+- [iMet collection](https://borda.github.io/kaggle_iMet-collection) as multi-label classification on museum objects
+- [COVID detection](https://borda.github.io/kaggle_COVID-detection) as object detection on CT (DICOM format) scans
+- [Brain Tumor 3D](https://borda.github.io/kaggle_brain-tumor-3D) as image classification
