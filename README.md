@@ -20,10 +20,18 @@ This is a simple template project to Kaggle participation...
 - list/link online sources
 - link kernels/submissions
 
-## Showcase: some derived projects
+## Showcases
+
+### Some derived projects
 
 - [Cassava leaf disease](https://borda.github.io/kaggle_cassava-leaf-disease) as image classification
 - [Plant Pathology](https://borda.github.io/kaggle_plant-pathology) as multi-label classification on apple tree leaf
 - [iMet collection](https://borda.github.io/kaggle_iMet-collection) as multi-label classification on museum objects
 - [COVID detection](https://borda.github.io/kaggle_COVID-detection) as object detection on CT (DICOM format) scans
-- [Brain Tumor 3D](https://borda.github.io/kaggle_brain-tumor-3D) as image classification
+- [Brain Tumor 3D](https://borda.github.io/kaggle_brain-tumor-3D) as image classification on MRI scans
+
+### Author's writing
+
+- [Best Practices to Rank on Kaggle Competition with PyTorch Lightning and Grid.ai Spot Instances](https://devblog.pytorchlightning.ai/best-practices-to-rank-on-kaggle-competition-with-pytorch-lightning-and-grid-ai-spot-instances-54aa5248aa8e)
+- [Practical Lighting Tips to Rank on Kaggle Image Challenges](https://devblog.pytorchlightning.ai/practical-tips-to-rank-on-kaggle-image-challenges-with-lightning-242e2e533429)
+- [Tackling the Kaggle COVID Detection Challenge with Lightning Flash and IceVision](https://medium.com/codex/tackle-covid-detection-with-lightning-flash-and-icevision-3f66f28c24ac)
