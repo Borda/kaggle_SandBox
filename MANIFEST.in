@@ -10,6 +10,7 @@ recursive-include challenge_xyz *.md
 # Include the license file
 include LICENSE
 
+recursive-include assets *.png *.jpg
 exclude *.sh
 exclude *.toml
 exclude *.svg

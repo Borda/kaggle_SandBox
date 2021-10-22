@@ -20,6 +20,8 @@ This is a simple template project to Kaggle participation...
 - list/link online sources
 - link kernels/submissions
 
+![sample figure](./assets/demo-glances.jpg)
+
 ## Showcases
 
 ### Some derived projects
@@ -29,6 +31,7 @@ This is a simple template project to Kaggle participation...
 - [iMet collection](https://borda.github.io/kaggle_iMet-collection) as multi-label classification on museum objects
 - [COVID detection](https://borda.github.io/kaggle_COVID-detection) as object detection on CT (DICOM format) scans
 - [Brain Tumor 3D](https://borda.github.io/kaggle_brain-tumor-3D) as image classification on MRI scans
+- [Cell detection](https://borda.github.io/kaggle_cell-inst-segm) as instance segmentation in microscopy images
 
 ### Author's writing
 
