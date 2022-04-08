@@ -9,7 +9,7 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -35,6 +35,14 @@ repos:
     hooks:
       - id: docformatter
         args: [--in-place, --wrap-summaries=115, --wrap-descriptions=120]
+
+  #- repo: https://github.com/omnilib/ufmt
+  #  rev: v1.3.2
+  #  hooks:
+  #    - id: ufmt
+  #      additional_dependencies:
+  #        - black == 22.3.0
+  #        - usort == 1.0.2
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
