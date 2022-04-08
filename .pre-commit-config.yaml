@@ -9,7 +9,7 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -24,7 +24,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.0
+    rev: v2.31.1
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -36,6 +36,14 @@ repos:
       - id: docformatter
         args: [--in-place, --wrap-summaries=115, --wrap-descriptions=120]
 
+  #- repo: https://github.com/omnilib/ufmt
+  #  rev: v1.3.2
+  #  hooks:
+  #    - id: ufmt
+  #      additional_dependencies:
+  #        - black == 22.3.0
+  #        - usort == 1.0.2
+
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
@@ -43,13 +51,13 @@ repos:
         name: imports
 
   - repo: https://github.com/psf/black
-    rev: 21.12b0
+    rev: 22.3.0
     hooks:
       - id: black
         name: Format code
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.11
+    rev: 0.7.14
     hooks:
       - id: mdformat
         additional_dependencies:
