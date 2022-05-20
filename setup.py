@@ -3,7 +3,7 @@
 import os
 
 # Always prefer setuptools over distutils
-from importlib.util import spec_from_file_location, module_from_spec
+from importlib.util import module_from_spec, spec_from_file_location
 
 from setuptools import find_packages, setup
 
@@ -11,7 +11,7 @@ from setuptools import find_packages, setup
 # http://blog.ionelmc.ro/2014/05/25/python-packaging/
 
 _PATH_ROOT = os.path.dirname(__file__)
-_PATH_SOURCE = os.path.join(_PATH_ROOT, 'src')
+_PATH_SOURCE = os.path.join(_PATH_ROOT, "src")
 
 
 def _load_py_module(fname, pkg="challenge_xyz"):
@@ -55,7 +55,7 @@ setup(
     author_email=_about.__author_email__,
     url=_about.__homepage__,
     license=_about.__license__,
-    packages=find_packages(where='src'),
+    packages=find_packages(where="src"),
     package_dir={"": "src"},
     long_description=_load_long_description(_about.__homepage__, _about.__version__),
     long_description_content_type="text/markdown",
