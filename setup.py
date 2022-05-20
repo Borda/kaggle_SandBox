@@ -3,14 +3,25 @@
 import os
 
 # Always prefer setuptools over distutils
+from importlib.util import spec_from_file_location, module_from_spec
+
 from setuptools import find_packages, setup
 
 # https://packaging.python.org/guides/single-sourcing-package-version/
 # http://blog.ionelmc.ro/2014/05/25/python-packaging/
 
 _PATH_ROOT = os.path.dirname(__file__)
+_PATH_SOURCE = os.path.join(_PATH_ROOT, 'src')
 
-import challenge_xyz  # noqa: E402
+
+def _load_py_module(fname, pkg="challenge_xyz"):
+    spec = spec_from_file_location(os.path.join(pkg, fname), os.path.join(_PATH_SOURCE, pkg, fname))
+    py = module_from_spec(spec)
+    spec.loader.exec_module(py)
+    return py
+
+
+_about = _load_py_module("__about__.py")
 
 
 def _load_requirements(path_dir=_PATH_ROOT, comment_char="#"):
@@ -21,8 +32,8 @@ def _load_requirements(path_dir=_PATH_ROOT, comment_char="#"):
     return reqs
 
 
-def _load_long_description():
-    url = os.path.join(challenge_xyz.__homepage__, "raw", challenge_xyz.__version__, "docs")
+def _load_long_description(homepage: str, version: str):
+    url = os.path.join(homepage, "raw", version, "docs")
     text = open("README.md", encoding="utf-8").read()
     # replace relative repository path to absolute link to the release
     text = text.replace("](docs", f"]({url}")
@@ -38,14 +49,15 @@ def _load_long_description():
 # engineer specific practices
 setup(
     name="kaggle-sandbox",
-    version=challenge_xyz.__version__,
-    description=challenge_xyz.__docs__,
-    author=challenge_xyz.__author__,
-    author_email=challenge_xyz.__author_email__,
-    url=challenge_xyz.__homepage__,
-    license=challenge_xyz.__license__,
-    packages=find_packages(exclude=["tests", "docs"]),
-    long_description=_load_long_description(),
+    version=_about.__version__,
+    description=_about.__docs__,
+    author=_about.__author__,
+    author_email=_about.__author_email__,
+    url=_about.__homepage__,
+    license=_about.__license__,
+    packages=find_packages(where='src'),
+    package_dir={"": "src"},
+    long_description=_load_long_description(_about.__homepage__, _about.__version__),
     long_description_content_type="text/markdown",
     include_package_data=True,
     zip_safe=False,
@@ -54,7 +66,7 @@ setup(
     setup_requires=[],
     install_requires=_load_requirements(_PATH_ROOT),
     project_urls={
-        "Source Code": challenge_xyz.__homepage__,
+        "Source Code": _about.__homepage__,
     },
     classifiers=[
         "Environment :: Console",
