@@ -1,5 +1,5 @@
 name: CI action schema
-on: # Trigger the workflow on push or pull request, but only for the master branch
+on:
   push: {}
   pull_request:
     branches: [main]
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install pkg
         run: |

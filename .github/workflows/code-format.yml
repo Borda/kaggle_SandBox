@@ -10,22 +10,21 @@ jobs:
   pep8-check-flake8:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: 3.7
       - name: Install dependencies
         run: |
-          pip install flake8
+          pip install -q -r tests/requirements.txt
           pip list
-        shell: bash
       - name: PEP8
         run: flake8 .
 
   pre-commit-check:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         # for private repo - first is the checkout step, which needs to use unlimited fetch depth for pushing
         with:
           fetch-depth: 0
