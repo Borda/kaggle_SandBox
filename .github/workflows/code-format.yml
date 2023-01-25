@@ -7,19 +7,6 @@ on:  # Trigger the workflow on push or pull request, but only for the main branc
   pull_request: {}
 
 jobs:
-  pep8-check-flake8:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.7
-      - name: Install dependencies
-        run: |
-          pip install -q -r tests/requirements.txt
-          pip list
-      - name: PEP8
-        run: flake8 .
 
   pre-commit-check:
     runs-on: ubuntu-20.04
