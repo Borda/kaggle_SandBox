@@ -1,3 +1,5 @@
+"""The package root."""
+
 import os
 
 from challenge_xyz.__about__ import *  # noqa: F401, F403

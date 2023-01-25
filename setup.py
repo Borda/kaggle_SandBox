@@ -24,7 +24,7 @@ def _load_py_module(fname, pkg="challenge_xyz"):
 _about = _load_py_module("__about__.py")
 
 
-def _load_requirements(path_dir=_PATH_ROOT, comment_char="#"):
+def _load_requirements(path_dir=_PATH_ROOT, comment_char="#") -> list:
     with open(os.path.join(path_dir, "requirements.txt")) as file:
         lines = [ln.strip() for ln in file.readlines()]
     reqs = [ln[: ln.index(comment_char)] if comment_char in ln else ln for ln in lines]
@@ -32,9 +32,10 @@ def _load_requirements(path_dir=_PATH_ROOT, comment_char="#"):
     return reqs
 
 
-def _load_long_description(homepage: str, version: str):
+def _load_long_description(homepage: str, version: str) -> str:
     url = os.path.join(homepage, "raw", version, "docs")
-    text = open("README.md", encoding="utf-8").read()
+    with open("README.md", encoding="utf-8") as fp:
+        text = fp.read()
     # replace relative repository path to absolute link to the release
     text = text.replace("](docs", f"]({url}")
     # SVG images are not readable on PyPI, so replace them  with PNG
