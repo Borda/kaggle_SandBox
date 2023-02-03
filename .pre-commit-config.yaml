@@ -66,10 +66,7 @@ repos:
           #- flake8-simplify
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.226
+    rev: v0.0.240
     hooks:
       - id: ruff
-        args:
-          - "--fix"
-          # Respect `exclude` and `extend-exclude` settings.
-          - "--force-exclude"
+        args: ["--fix"]
