@@ -1,5 +1,5 @@
 <details>
-  <summary>Before submitting</summary>
+  <summary><b>Before submitting</b></summary>
 
 - [ ] Was this discussed/agreed via a Github issue? (no need for typos and docs improvements)
 - Did you make sure to update the docs?
