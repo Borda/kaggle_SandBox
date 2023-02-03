@@ -6,10 +6,14 @@ on:  # Trigger the workflow on push or pull request, but only for the main branc
     branches: [main]
   pull_request: {}
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
 
   pre-commit-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         # for private repo - first is the checkout step, which needs to use unlimited fetch depth for pushing
