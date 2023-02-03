@@ -6,15 +6,19 @@ on:  # Trigger the workflow on push or pull request, but only for the main branc
     branches: [main]
   pull_request: {}
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   pkg-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: 3.8
 
       - name: Check package
         run: |
@@ -55,7 +59,7 @@ jobs:
       - name: Try installing
         working-directory: dist
         run: |
-          ls
+          ls -lh
           pip install $(python -c "import glob ; print(' '.join(glob.glob('*.whl')))")
           pip show kaggle-sandbox
           python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
