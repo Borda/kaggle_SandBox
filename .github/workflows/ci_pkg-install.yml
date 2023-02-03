@@ -13,29 +13,28 @@ defaults:
 jobs:
   pkg-check:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.8
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.8
 
-      - name: Check package
-        run: |
-          pip install check-manifest
-          check-manifest
-          python setup.py check --metadata --strict
+    - name: Check package
+      run: |
+        pip install check-manifest
+        check-manifest
+        python setup.py check --metadata --strict
 
-      - name: Create package
-        run: |
-          pip install --upgrade setuptools wheel
-          python setup.py sdist bdist_wheel
+    - name: Create package
+      run: |
+        pip install --upgrade setuptools wheel
+        python setup.py sdist bdist_wheel
 
-      - name: Verify package
-        run: |
-          pip install -q -r tests/requirements.txt
-          twine check dist/*
-          python setup.py clean
+    - name: Verify package
+      run: |
+        pip install -q -r tests/requirements.txt
+        twine check dist/*
+        python setup.py clean
 
   pkg-install:
     runs-on: ${{ matrix.os }}
@@ -44,22 +43,36 @@ jobs:
       matrix:
         os: [ubuntu-20.04, macOS-10.15, windows-2019]
         python-version: [3.8]  #, 3.9
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Create package
-        run: |
-          pip install setuptools wheel
-          python setup.py sdist bdist_wheel
+    - name: Create package
+      run: |
+        pip install setuptools wheel
+        python setup.py sdist bdist_wheel
 
-      - name: Try installing
-        working-directory: dist
-        run: |
-          ls -lh
-          pip install $(python -c "import glob ; print(' '.join(glob.glob('*.whl')))")
-          pip show kaggle-sandbox
-          python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
+    - name: Try installing
+      working-directory: dist
+      run: |
+        ls -lh
+        pip install $(python -c "import glob ; print(' '.join(glob.glob('*.whl')))")
+        pip show kaggle-sandbox
+        python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
+
+
+  watcher:
+    runs-on: ubuntu-latest
+    needs: ["pkg-install", "pkg-check"]
+    if: always()
+    steps:
+    - run: echo "${{ needs.pkg-install.result }}"
+    - name: failing...
+      if: needs.pkg-install.result == 'failure'
+      run: exit 1
+    - name: cancelled or skipped...
+      if: contains(fromJSON('["cancelled", "skipped"]'), needs.pkg-install.result)
+      timeout-minutes: 1
+      run: sleep 90
