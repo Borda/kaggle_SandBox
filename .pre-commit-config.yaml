@@ -24,20 +24,20 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.8.0
     hooks:
       - id: pyupgrade
         args: [--py38-plus]
         name: Upgrade code
 
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.1
+    rev: v1.7.3
     hooks:
       - id: docformatter
         args: [--in-place, --wrap-summaries=115, --wrap-descriptions=120]
 
   - repo: https://github.com/omnilib/ufmt
-    rev: v2.0.1
+    rev: v2.1.0
     hooks:
       - id: ufmt
         additional_dependencies:
@@ -54,7 +54,7 @@ repos:
           - mdformat_frontmatter
 
   - repo: https://github.com/asottile/yesqa
-    rev: v1.4.0
+    rev: v1.5.0
     hooks:
       - id: yesqa
         additional_dependencies:
@@ -66,7 +66,7 @@ repos:
           #- flake8-simplify
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.240
+    rev: v0.0.275
     hooks:
       - id: ruff
         args: ["--fix"]
