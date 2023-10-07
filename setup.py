@@ -5,7 +5,7 @@ import os
 # Always prefer setuptools over distutils
 from importlib.util import module_from_spec, spec_from_file_location
 
-from setuptools import find_packages, setup
+from setuptools import find_namespace_packages, setup
 
 # https://packaging.python.org/guides/single-sourcing-package-version/
 # http://blog.ionelmc.ro/2014/05/25/python-packaging/
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         author_email=_about.__author_email__,
         url=_about.__homepage__,
         license=_about.__license__,
-        packages=find_packages(where="src"),
+        packages=find_namespace_packages(where="src"),
         package_dir={"": "src"},
         long_description=_load_long_description(_about.__homepage__, _about.__version__),
         long_description_content_type="text/markdown",
