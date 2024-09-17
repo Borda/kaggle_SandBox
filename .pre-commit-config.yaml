@@ -3,7 +3,7 @@ default_language_version:
 
 ci:
   autofix_prs: true
-  autoupdate_commit_msg: '[pre-commit.ci] pre-commit suggestions'
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit suggestions"
   autoupdate_schedule: quarterly
   # submodules: true
 
@@ -19,54 +19,49 @@ repos:
       - id: check-toml
       - id: check-added-large-files
         exclude: .*\.ipynb
-        args: ['--maxkb=250', '--enforce-all']
+        args: ["--maxkb=250", "--enforce-all"]
       - id: check-docstring-first
       - id: detect-private-key
 
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.16.0
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
     hooks:
-      - id: pyupgrade
-        args: [--py38-plus]
-        name: Upgrade code
-
-  - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.5
-    hooks:
-      - id: docformatter
-        args: [--in-place, --wrap-summaries=115, --wrap-descriptions=120]
-
-  - repo: https://github.com/omnilib/ufmt
-    rev: v2.7.0
-    hooks:
-      - id: ufmt
-        additional_dependencies:
-          - black == 22.3.0
-          - usort == 1.0.2
+      - id: codespell
+        additional_dependencies: [tomli]
+        args: ["--write-changes"]
+        exclude: pyproject.toml
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
       - id: mdformat
+        args: ["--number"]
         additional_dependencies:
           - mdformat-gfm
           - mdformat-black
           - mdformat_frontmatter
-
-  - repo: https://github.com/asottile/yesqa
-    rev: v1.5.0
-    hooks:
-      - id: yesqa
-        additional_dependencies:
-          - pep8-naming
-          - pydocstyle
-          #- flake8-comprehensions
-          #- flake8-pytest-style
-          #- flake8-return
-          #- flake8-simplify
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.5.0
     hooks:
       - id: ruff
         args: ["--fix"]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        files: \.(json|yml|yaml|toml)
+        # https://prettier.io/docs/en/options.html#print-width
+        args: ["--print-width=120"]
+
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: 2.1.3
+    hooks:
+      - id: pyproject-fmt
+        additional_dependencies: [tox]
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.18
+    hooks:
+      - id: validate-pyproject

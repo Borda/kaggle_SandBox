@@ -12,25 +12,25 @@ jobs:
   validate-schema:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Install pkg
-      run: pip install check-jsonschema
+      - name: Install pkg
+        run: pip install check-jsonschema
 
-    - name: Scan repo
-      id: folders
-      run: python -c "import os; print('gh_actions=' + str(int(os.path.isdir('.github/actions'))))" >> $GITHUB_OUTPUT
+      - name: Scan repo
+        id: folders
+        run: python -c "import os; print('gh_actions=' + str(int(os.path.isdir('.github/actions'))))" >> $GITHUB_OUTPUT
 
-    # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-workflow.json
-    - name: GitHub Actions - workflow
-      run: |
-        files=$(find .github/workflows -name '*.yml' -or -name '*.yaml' -not -name '__*')
-        check-jsonschema -v $files --builtin-schema "github-workflows"
+      # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-workflow.json
+      - name: GitHub Actions - workflow
+        run: |
+          files=$(find .github/workflows -name '*.yml' -or -name '*.yaml' -not -name '__*')
+          check-jsonschema -v $files --builtin-schema "github-workflows"
 
-    # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-action.json
-    - name: GitHub Actions - action
-      if: steps.folders.outputs.gh_actions == '1'
-      run: |
-        files=$(find .github/actions -name '*.yml' -or -name '*.yaml')
-        heck-jsonschema -v $files --builtin-schema "github-actions"
+      # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-action.json
+      - name: GitHub Actions - action
+        if: steps.folders.outputs.gh_actions == '1'
+        run: |
+          files=$(find .github/actions -name '*.yml' -or -name '*.yaml')
+          heck-jsonschema -v $files --builtin-schema "github-actions"
