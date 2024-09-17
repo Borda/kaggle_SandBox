@@ -8,19 +8,6 @@ requires = [
     "wheel",
 ]
 
-[tool.black]
-# https://github.com/psf/black
-line-length = 120
-exclude = "(.eggs|.git|.hg|.mypy_cache|.venv|_build|buck-out|build|dist)"
-
-[tool.usort]
-known_first_party = [
-    "challenge_xyz",
-]
-skip_glob = []
-profile = "black"
-line_length = 120
-
 [tool.pytest.ini_options]
 norecursedirs = [
     ".git",
@@ -48,48 +35,67 @@ exclude_lines = [
 ]
 
 [tool.ruff]
+target-version = "py38"
 line-length = 120
-# Enable Pyflakes `E` and `F` codes by default.
-select = [
-    "E", "W",  # see: https://pypi.org/project/pycodestyle
-    "F",  # see: https://pypi.org/project/pyflakes
-    "D",  # see: https://pypi.org/project/pydocstyle
-    "N",  # see: https://pypi.org/project/pep8-naming
-]
-extend-select = [
-    "C4",  # see: https://pypi.org/project/flake8-comprehensions
-    "PT",  # see: https://pypi.org/project/flake8-pytest-style
-    "RET",  # see: https://pypi.org/project/flake8-return
-    "SIM",  # see: https://pypi.org/project/flake8-simplify
-]
-ignore = [
-    "E731",  # Do not assign a lambda expression, use a def
-]
-# Exclude a variety of commonly ignored directories.
-exclude = [
-    ".eggs",
-    ".git",
-    ".ruff_cache",
-    "__pypackages__",
-    "_build",
-    "build",
-    "dist",
-    "docs"
-]
-ignore-init-module-imports = true
-
-[tool.ruff.per-file-ignores]
-"setup.py" = ["D100", "RET504"]
-"__about__.py" = ["D100"]
-"__init__.py" = ["D100"]
-
-[tool.ruff.pydocstyle]
-# Use Google-style docstrings.
-convention = "google"
 
 #[tool.ruff.pycodestyle]
 #ignore-overlong-task-comments = true
-
-[tool.ruff.mccabe]
+format.preview = true
+lint.select = [
+  "D",  # see: https://pypi.org/project/pydocstyle
+  "E",
+  "F",  # see: https://pypi.org/project/pyflakes
+  "I",  #see: https://pypi.org/project/isort/
+  "N",  # see: https://pypi.org/project/pep8-naming
+  "S",  # see: https://pypi.org/project/flake8-bandit
+  "UP", # see: https://docs.astral.sh/ruff/rules/#pyupgrade-up
+  "W",  # see: https://pypi.org/project/pycodestyle
+]
+lint.extend-select = [
+  "A",    # see: https://pypi.org/project/flake8-builtins
+  "ANN",  # see: https://pypi.org/project/flake8-annotations
+  "B",    # see: https://pypi.org/project/flake8-bugbear
+  "C4",   # see: https://pypi.org/project/flake8-comprehensions
+  "EXE",  # see: https://pypi.org/project/flake8-executable
+  "ISC",  # see: https://pypi.org/project/flake8-implicit-str-concat
+  "PERF", # see: https://pypi.org/project/perflint/
+  "PIE",  # see: https://pypi.org/project/flake8-pie
+  "PLE",  # see: https://pypi.org/project/pylint/
+  "PT",   # see: https://pypi.org/project/flake8-pytest-style
+  "PYI",  # see: https://pypi.org/project/flake8-pyi/
+  "Q",    # see: https://pypi.org/project/flake8-quotes
+  "RET",  # see: https://pypi.org/project/flake8-return
+  "RUF",  # Ruff-specific rules
+  "SIM",  # see: https://pypi.org/project/flake8-simplify
+  "T10",  # see: https://pypi.org/project/flake8-debugger
+  "TID",  # see: https://pypi.org/project/flake8-tidy-imports/
+  "YTT",  # see: https://pypi.org/project/flake8-2020
+]
+lint.ignore = [
+  "ANN101", # Missing type annotation for `self` in method
+  "D100",   # todo: Missing docstring in public module
+  "D104",   # todo: Missing docstring in public package
+  "D107",   # Missing docstring in `__init__`
+  "E731",   # Do not assign a lambda expression, use a def
+  "EXE002", # The file is executable but no shebang is present
+  "ISC001", # potehtional comflict, flagged by Ruff itsel
+]
+lint.unfixable = [
+  "F401",
+]
 # Unlike Flake8, default to a complexity level of 10.
-max-complexity = 10
+lint.mccabe.max-complexity = 10
+# Use Google-style docstrings.
+lint.pydocstyle.convention = "google"
+
+[tool.codespell]
+#skip = '*.py'
+quiet-level = 3
+# Todo: comma separated list of words; waiting for:
+#  https://github.com/codespell-project/codespell/issues/2839#issuecomment-1731601603
+# Todo: also adding links until they ignored by its: nature
+#  https://github.com/codespell-project/codespell/issues/2243#issuecomment-1732019960
+#ignore-words-list = """
+#  wil, \
+#  archiv
+#"""
