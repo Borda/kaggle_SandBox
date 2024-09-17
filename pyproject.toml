@@ -1,37 +1,7 @@
-[metadata]
-license_file = "LICENSE"
-description-file = "README.md"
-
 [build-system]
 requires = [
-    "setuptools",
-    "wheel",
-]
-
-[tool.pytest.ini_options]
-norecursedirs = [
-    ".git",
-    ".github",
-    "dist",
-    "build",
-    "docs",
-]
-addopts = [
-    "--strict-markers",
-    "--doctest-modules",
-    "--color=yes",
-    "--disable-pytest-warnings",
-]
-filterwarnings = [
-    "error::FutureWarning",
-]
-xfail_strict = true
-junit_duration_report = "call"
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "pass",
+  "setuptools",
+  "wheel",
 ]
 
 [tool.ruff]
@@ -99,3 +69,29 @@ quiet-level = 3
 #  wil, \
 #  archiv
 #"""
+
+[tool.pytest.ini_options]
+norecursedirs = [
+  ".git",
+  ".github",
+  "dist",
+  "build",
+  "docs",
+]
+addopts = [
+  "--strict-markers",
+  "--doctest-modules",
+  "--color=yes",
+  "--disable-pytest-warnings",
+]
+filterwarnings = [
+  "error::FutureWarning",
+]
+xfail_strict = true
+junit_duration_report = "call"
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "pass",
+]
