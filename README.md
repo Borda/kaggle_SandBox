@@ -10,7 +10,7 @@ This is a simple template project to Kaggle participation...
 
 - a core package with functionalities used across scripts and notebooks
 - tutorial/experiment notebooks (in _notebook_ folder if needed)
-- \[optional\] some functionality testing aka unittests or doctests
+- [optional] some functionality testing aka unittests or doctests
 
 ### What to write here:
 
