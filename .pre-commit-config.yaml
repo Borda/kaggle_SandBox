@@ -44,9 +44,11 @@ repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.10
     hooks:
-      - id: ruff
+      - id: ruff-check
+        name: Ruff linter
         args: ["--fix"]
       - id: ruff-format
+        name: Ruff/black formatter
 
   - repo: https://github.com/JoC0de/pre-commit-prettier
     rev: v3.7.4
