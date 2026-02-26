@@ -24,18 +24,23 @@ jobs:
           # -----------------------------------------------------------
 
           # Idle number of days before marking issues/PRs stale (Old: daysUntilStale)
-          days-before-stale: 60
+          days-before-stale: 45
 
           # Idle number of days before closing stale issues/PRs (Old: daysUntilClose)
           days-before-close: 7
 
           # Label to apply when marking as stale (Old: staleLabel)
-          stale-issue-label: "stale"
-          stale-pr-label: "stale"
+          stale-issue-label: "won't fix"
+          stale-pr-label: "won't fix"
 
           # Labels that prevent an issue/PR from becoming stale (Old: exemptLabels)
           exempt-issue-labels: "pinned, security"
           exempt-pr-labels: "pinned, security"
+
+          # Old stale.yml ignored issues with milestones and assignees.
+          exempt-all-issue-milestones: true
+          exempt-all-issue-assignees: true
+          # NOTE: actions/stale@v9 has no equivalent to old `exemptProjects: true`.
 
           # Comment to post when marking as stale (Old: markComment)
           stale-issue-message: >
@@ -48,6 +53,5 @@ jobs:
             for your contributions.
 
           # Comment to post when closing (Old: closeComment)
-          # (Leave blank '' if you didn't have a close comment in your old config)
-          close-issue-message: "This issue was closed because it has been stalled for 7 days with no activity."
-          close-pr-message: "This pull request was closed because it has been stalled for 7 days with no activity."
+          close-issue-message: ""
+          close-pr-message: ""
