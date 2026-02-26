@@ -34,8 +34,8 @@ jobs:
           stale-pr-label: "stale"
 
           # Labels that prevent an issue/PR from becoming stale (Old: exemptLabels)
-          exempt-issue-labels: "pinned, security, WIP"
-          exempt-pr-labels: "pinned, security, WIP"
+          exempt-issue-labels: "pinned, security"
+          exempt-pr-labels: "pinned, security"
 
           # Comment to post when marking as stale (Old: markComment)
           stale-issue-message: >
