@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/stale@v9
+      - uses: actions/stale@v10
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -40,7 +40,7 @@ jobs:
           # Old stale.yml ignored issues with milestones and assignees.
           exempt-all-issue-milestones: true
           exempt-all-issue-assignees: true
-          # NOTE: actions/stale@v9 has no equivalent to old `exemptProjects: true`.
+          # NOTE: actions/stale@v10 has no equivalent to old `exemptProjects: true`.
 
           # Comment to post when marking as stale (Old: markComment)
           stale-issue-message: >
