@@ -56,8 +56,8 @@ jobs:
 
       - name: Try installing
         run: |
-          uv run --with "$(python -c "import glob; print(glob.glob('dist/*.whl')[0])")" \
-            python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
+          uv run --with "$(python -c 'import glob; print(glob.glob("dist/*.whl")[0])')" \
+            python -c "import challenge_xyz; print(challenge_xyz.__version__)"
 
       - name: Try editable install
         run: uv run --with-editable . python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
