@@ -1,20 +1,18 @@
-# Each line is a file pattern followed by one or more owners.
+# Inactive CODEOWNERS template.
+#
+# Forks that want GitHub review-owner routing should rename this file to:
+#   .github/CODEOWNERS
 
-# These owners will be the default owners for everything in the repo.
-# Unless a later match takes precedence, @global-owner1 and @global-owner2
-# will be requested for review when someone opens a pull request.
+# Default owner for this template.
+*                       @borda
 
-* @borda
+# CI/CD and project configuration.
+/.github/               @borda
+*.yml                   @borda
+*.yaml                  @borda
+pyproject.toml          @borda
 
-# CI/CD and configs
-/.github/           @borda
-*.yml               @borda
-require*.txt        @borda
-
-# Docs
-/docs/                      @borda
-/.github/*.md               @borda
-/.github/ISSUE_TEMPLATE/    @borda
-
-/.github/CODEOWNERS         @borda
-/README.md                  @borda
+# Docs and examples.
+/README.md              @borda
+/notebooks/             @borda
+/resources/             @borda

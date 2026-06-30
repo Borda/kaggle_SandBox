@@ -14,21 +14,21 @@ jobs:
   pre-commit-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         # for private repo - first is the checkout step, which needs to use unlimited fetch depth for pushing
         #with:
         #  fetch-depth: 0
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6.3.0
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
 
       - name: set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6.1.0
         with:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
 
-      - uses: pre-commit/action@v3.0.1
-        # this action also provides an additional behaviour when used in private repositories
-        # when configured with a GitHub token, the action will push back fixes to the pull request branch
-        #with:
-        #  token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run pre-commit
+        run: uv run --group dev pre-commit run --all-files
