@@ -1,4 +1,4 @@
-# Notebooks
+# 📓 Notebooks
 
 This folder is intended for storing Jupyter notebooks related to exploration, data analysis, and experimentation for the Kaggle challenges.
 
@@ -24,30 +24,15 @@ Rules:
 - Prefer top-level cell flow over a single `main()` wrapper. A notebook script should read as ordered cells: configure, load data, inspect, train, predict, validate, write outputs.
 - Keep one logical step per cell: setup, data loading, validation, model, prediction, output writing.
 
-## Convert With Jupytext
+## 🔄 Convert With Jupytext
 
-Run Jupytext with `uvx` when you need an `.ipynb` copy:
-
-```bash
-uvx --from jupytext jupytext --version
-```
-
-Convert a percent-script notebook to `.ipynb`:
+Install Jupytext when you need an `.ipynb` copy:
 
 ```bash
-uvx --from jupytext jupytext --to ipynb notebooks/00_baseline.py
-```
+pip install jupytext
 
-Convert an `.ipynb` notebook back to percent-script Python:
-
-```bash
-uvx --from jupytext jupytext --to py:percent notebooks/00_baseline.ipynb
-```
-
-To keep both files paired while editing, set the notebook formats once:
-
-```bash
-uvx --from jupytext jupytext --set-formats ipynb,py:percent notebooks/00_baseline.ipynb
+# Runnable copy in notebooks/ for Kaggle upload or local execution.
+jupytext --to notebook notebooks/00_baseline.py --output notebooks/00_baseline.ipynb
 ```
 
 Start with `00_baseline.py`. It is intentionally simple: it copies Kaggle's `sample_submission.csv` into `outputs/baseline.csv` and validates the generated file shape with `challenge_xyz` utilities. Replace that baseline with model predictions once the data and metric are understood.

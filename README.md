@@ -1,4 +1,4 @@
-# Kaggle sandbox
+# 🏁 Kaggle sandbox
 
 [![CI complete testing](https://github.com/Borda/kaggle_sandbox/actions/workflows/ci_testing.yml/badge.svg?branch=main&event=push)](https://github.com/Borda/kaggle_sandbox/actions/workflows/ci_testing.yml)
 [![codecov](https://codecov.io/gh/Borda/kaggle_sandbox/branch/main/graph/badge.svg)](https://codecov.io/gh/Borda/kaggle_sandbox)
@@ -11,7 +11,7 @@ Forks should rename `challenge_xyz` to the competition package name once the
 project stops being a template. The package is intentionally small: put shared
 functions there, then import them from multiple Kaggle notebooks.
 
-## Quickstart
+## ⚡ Quickstart
 
 Create an environment and install the template:
 
@@ -42,7 +42,7 @@ uv sync --group dev
 uv run --group dev pytest -q
 ```
 
-## Project Layout
+## 🗂️ Project Layout
 
 - `src/challenge_xyz/`: reusable placeholder helper package shared by scripts and notebooks.
 - `notebooks/`: notebook-compatible Python scripts with `# %%` cell markers.
@@ -51,7 +51,7 @@ uv run --group dev pytest -q
 - `outputs/`: optional local generated files, ignored by git.
 - `tests/`: doctests and regression tests for template helpers.
 
-## Development Checks
+## ⚙️ Development Checks
 
 ```bash
 uv run --group dev ruff check .
@@ -66,7 +66,7 @@ For a full local pre-commit pass:
 uv run --group dev pre-commit run --all-files
 ```
 
-## Template Checklist
+## 📋 Template Checklist
 
 When starting a new competition, update or add:
 
@@ -79,7 +79,34 @@ When starting a new competition, update or add:
 - Tests for shared helpers: empty inputs, missing files, malformed CSVs, and
   shape or dtype checks for tensor code.
 
-## References
+## 🌟 Showcases
+
+### Selected Kaggle notebooks:
+
+- [AMIA X-Ray: Inference RF-DETR detections](https://www.kaggle.com/code/jirkaborovec/amia-x-ray-inference-rf-detr-detections)
+- [AMIA X-Ray: EDA baseline RF-DETR detect](https://www.kaggle.com/code/jirkaborovec/amia-x-ray-eda-baseline-rf-detr-detect)
+- [Pig Posture: EDA + baseline RF-DETR detect](https://www.kaggle.com/code/jirkaborovec/pig-posture-eda-baseline-rf-detr-detect)
+- [ROGII drill: geosteer + LightGBM/CatBoost/Ridge](https://www.kaggle.com/code/jirkaborovec/rogii-drill-geosteer-lightgbm-catboost-ridge)
+- [Surface: train+inference 3D segmentation and GPU augment](https://www.kaggle.com/code/jirkaborovec/surface-train-inference-3d-segm-gpu-augment)
+- [Surface: nnUNet training + inference with 2xT4](https://www.kaggle.com/code/jirkaborovec/surface-nnunet-training-inference-with-2xt4)
+- [Surface: EDA interactive image/mask 3D view](https://www.kaggle.com/code/jirkaborovec/surface-eda-interactive-img-mask-3d-view)
+- [CSIRO Img2Bio: EDA + XGBoost + DINOv3 features](https://www.kaggle.com/code/jirkaborovec/csiro-img2bio-eda-xgboost-dinov3-features)
+- [Cancer Subtype: Lightning Torch inference tiles](https://www.kaggle.com/code/jirkaborovec/cancer-subtype-lightning-torch-inference-tiles)
+- [Credit Risk: EDA and XGBoost depth=0+ GPU](https://www.kaggle.com/code/jirkaborovec/credit-risk-eda-xgboost-depth-0-gpu)
+- [IceCube: Neutrino fitting 3D points cloud](https://www.kaggle.com/code/jirkaborovec/icecube-neutrino-fitting-3d-points-cloud)
+- [BirdCLEF: Lightning Flash inference](https://www.kaggle.com/code/jirkaborovec/birdclef-lightning-flash-inference)
+
+### Selected writing:
+
+- [Tackling the Kaggle COVID Detection Challenge with Lightning Flash and IceVision](https://medium.com/codex/tackle-covid-detection-with-lightning-flash-and-icevision-3f66f28c24ac)
+- [Easy Kaggle Offline Submission With Chaining Kernel Notebooks](https://towardsdatascience.com/easy-kaggle-offline-submission-with-chaining-kernels-30bba5ea5c4d)
+- [Simple 3D MRI classification ranked bronze on Kaggle](https://towardsdatascience.com/simple-3d-mri-classification-ranked-bronze-on-kaggle-87edfdef018a/)
+- [Kaggle hacking: Validate a simple hypothesis against a hidden dataset](https://towardsdatascience.com/kaggle-hacking-validate-a-simple-hypothesis-against-a-hidden-dataset-4cf02bb16510/)
+- [How to organize a medical imaging challenge: Lessons from ANHIR](https://medium.com/data-science-collective/how-to-organize-a-medical-imaging-challenge-lessons-from-anhir-15fd486adbf2)
+- [The Open-Source Shepherd: Why Your Best Work Is Building a Project That Doesn't Need You](https://medium.com/codex/the-open-source-shepherd-why-your-best-work-is-building-a-project-that-doesnt-need-you-bfd0641f5aca)
+- [What Is Your Python Package's Public API, Really?](https://medium.com/codex/what-is-your-python-packages-public-api-really-3ff64a75bf7f)
+
+## 🔗 References
 
 - [Kaggle CLI](https://github.com/Kaggle/kaggle-api)
 - [KaggleHub](https://github.com/Kaggle/kagglehub)
