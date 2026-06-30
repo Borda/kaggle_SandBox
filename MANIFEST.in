@@ -3,9 +3,15 @@ recursive-exclude __pycache__  *.py[cod] *.orig
 include *.md
 include LICENSE
 
+exclude .codecov.yml
+exclude .pre-commit-config.yaml
+exclude _config.yml
+
 recursive-include assets *.jpg
 
 prune .git
 prune .github
+prune notebooks
+prune resources
 prune temp*
 prune docs*
