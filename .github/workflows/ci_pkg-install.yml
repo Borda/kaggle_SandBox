@@ -18,27 +18,22 @@ jobs:
   pkg-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6.3.0
         with:
           python-version: "3.10"
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
 
       - name: Check package
-        run: |
-          pip install check-manifest
-          check-manifest
-          python setup.py check --metadata --strict
+        run: uv run --group dev check-manifest
 
       - name: Create package
-        run: |
-          pip install --upgrade setuptools wheel
-          python setup.py sdist bdist_wheel
+        run: uv build
 
       - name: Verify package
-        run: |
-          pip install -q -r tests/requirements.txt
-          twine check dist/*
-          python setup.py clean
+        run: uv run --group dev twine check dist/*
 
   pkg-install:
     runs-on: ${{ matrix.os }}
@@ -48,23 +43,24 @@ jobs:
         os: ["ubuntu-latest", "macOS-latest", "windows-latest"]
         python-version: ["3.10"]
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
 
       - name: Create package
-        run: |
-          pip install setuptools wheel
-          python setup.py sdist bdist_wheel
+        run: uv build
 
       - name: Try installing
-        working-directory: dist
         run: |
-          ls -lh
-          pip install $(python -c "import glob ; print(' '.join(glob.glob('*.whl')))")
-          pip show kaggle-sandbox
-          python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
+          uv run --with "$(python -c 'import glob; print(glob.glob("dist/*.whl")[0])')" \
+            python -c "import challenge_xyz; print(challenge_xyz.__version__)"
+
+      - name: Try editable install
+        run: uv run --with-editable . python -c "import challenge_xyz ;  print(challenge_xyz.__version__)"
 
   watcher:
     runs-on: ubuntu-latest

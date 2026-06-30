@@ -21,44 +21,30 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macOS-latest", "windows-latest"]
-        python-version: ["3.10"]
-        requires: ["oldest", "latest"]
-    env:
-      TORCH_URL: https://download.pytorch.org/whl/cpu/torch_stable.html
+        python-version: ["3.10", "3.11", "3.12"]
     # Timeout: https://stackoverflow.com/a/59076067/4521646
     timeout-minutes: 25
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip"
-
-      - name: Set min. dependencies
-        if: matrix.requires == 'oldest'
-        run: |
-          for fpath in ('requirements.txt', 'tests/requirements.txt'):
-              req = open(fpath).read().replace('>=', '==')
-              open(fpath, 'w').write(req)
-        shell: python
-
-      - name: Install dependencies
-        run: |
-          pip install -e . -U -r tests/requirements.txt --find-links=${{ env.TORCH_URL }}
-          pip list
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
 
       - name: Tests
-        run: pytest . -v --cov=challenge_xyz
+        run: uv run --group test pytest . -v --cov=challenge_xyz
 
       - name: Statistics
         run: |
-          coverage report
-          coverage xml
+          uv run --group test coverage report
+          uv run --group test coverage xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         if: always()
         # see: https://github.com/actions/toolkit/issues/399
         continue-on-error: true

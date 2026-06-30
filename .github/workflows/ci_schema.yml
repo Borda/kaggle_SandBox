@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
-      - name: Install pkg
-        run: pip install check-jsonschema
+      - uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: true
 
       - name: Scan repo
         id: folders
@@ -26,11 +27,11 @@ jobs:
       - name: GitHub Actions - workflow
         run: |
           files=$(find .github/workflows -name '*.yml' -or -name '*.yaml' -not -name '__*')
-          check-jsonschema -v $files --builtin-schema "github-workflows"
+          uvx check-jsonschema -v $files --builtin-schema "github-workflows"
 
       # https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/github-action.json
       - name: GitHub Actions - action
         if: steps.folders.outputs.gh_actions == '1'
         run: |
           files=$(find .github/actions -name '*.yml' -or -name '*.yaml')
-          heck-jsonschema -v $files --builtin-schema "github-actions"
+          uvx check-jsonschema -v $files --builtin-schema "github-actions"

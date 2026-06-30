@@ -1,14 +1,76 @@
 [build-system]
+build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools",
+  "setuptools>=77",
   "wheel",
 ]
 
+[project]
+name = "kaggle-sandbox"
+version = "0.1.0"
+description = "Minimal Kaggle competition project template."
+readme = "README.md"
+keywords = [
+  "kaggle",
+  "machine-learning",
+  "template",
+]
+license = "MIT"
+license-files = [
+  "LICENSE",
+]
+authors = [
+  { name = "Jiri Borovec", email = "6035284+Borda@users.noreply.github.com" },
+]
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+optional-dependencies.kaggle = [
+  "kaggle",
+  "kagglehub",
+]
+optional-dependencies.ml = [
+  "torch>=2.8",
+]
+urls."Source Code" = "https://github.com/Borda/kaggle_sandbox"
+
+[dependency-groups]
+dev = [
+  "build",
+  "check-manifest",
+  "pre-commit",
+  "pytest>=8.4.2,<8.5",
+  "pytest-cov>=7.1,<7.2",
+  "ruff",
+  "twine>=6.2,<6.3",
+]
+test = [
+  "pytest>=8.4.2,<8.5",
+  "pytest-cov>=7.1,<7.2",
+]
+
+[tool.setuptools]
+packages.find.where = [
+  "src",
+]
+
 [tool.ruff]
-target-version = "py38"
+target-version = "py310"
 line-length = 120
-# [tool.ruff.pycodestyle]
-# ignore-overlong-task-comments = true
 format.preview = true
 lint.select = [
   "D",  # see: https://pypi.org/project/pydocstyle
@@ -41,41 +103,37 @@ lint.extend-select = [
   "YTT",  # see: https://pypi.org/project/flake8-2020
 ]
 lint.ignore = [
-  "ANN101", # Missing type annotation for `self` in method
-  "D100",   # todo: Missing docstring in public module
-  "D104",   # todo: Missing docstring in public package
-  "D107",   # Missing docstring in `__init__`
-  "E731",   # Do not assign a lambda expression, use a def
-  "EXE002", # The file is executable but no shebang is present
-  "ISC001", # potehtional comflict, flagged by Ruff itsel
+  "D100",   # Missing docstring in public module.
+  "D104",   # Missing docstring in public package.
+  "D107",   # Missing docstring in `__init__`.
+  "E731",   # Do not assign a lambda expression, use a def.
+  "EXE002", # File is executable but no shebang is present.
+  "ISC001", # Potential conflict, flagged by Ruff itself.
+]
+lint.per-file-ignores."tests/**/*.py" = [
+  "D103",
+  "S101",
 ]
 lint.unfixable = [
   "F401",
 ]
-# Unlike Flake8, default to a complexity level of 10.
 lint.mccabe.max-complexity = 10
-# Use Google-style docstrings.
 lint.pydocstyle.convention = "google"
 
 [tool.codespell]
-# skip = '*.py'
 quiet-level = 3
 
 [tool.pytest]
-# Todo: comma separated list of words; waiting for:
-#  https://github.com/codespell-project/codespell/issues/2839#issuecomment-1731601603
-# Todo: also adding links until they ignored by its: nature
-#  https://github.com/codespell-project/codespell/issues/2243#issuecomment-1732019960
-# ignore-words-list = """
-#  wil, \
-#  archiv
-# """
+ini_options.pythonpath = [
+  "src",
+]
 ini_options.norecursedirs = [
   ".git",
   ".github",
   "dist",
   "build",
   "docs",
+  "notebooks",
 ]
 ini_options.addopts = [
   "--strict-markers",
@@ -90,6 +148,9 @@ ini_options.xfail_strict = true
 ini_options.junit_duration_report = "call"
 
 [tool.coverage]
+run.source = [
+  "challenge_xyz",
+]
 report.exclude_lines = [
   "pass",
   "pragma: no cover",
