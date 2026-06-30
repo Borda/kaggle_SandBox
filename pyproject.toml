@@ -15,7 +15,7 @@ keywords = [
   "machine-learning",
   "template",
 ]
-license = { file = "LICENSE" }
+license = "MIT"
 license-files = [
   "LICENSE",
 ]
