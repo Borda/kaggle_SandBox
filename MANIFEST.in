@@ -23,9 +23,11 @@ exclude *.yml
 exclude *.yaml
 exclude *.toml
 
+# Exclude git and github files
 prune .git
 prune .github
 prune notebook*
+prune resources*
 prune temp*
 prune test*
 prune docs*

@@ -55,19 +55,6 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
 # Sphinx documentation
 docs/_build/
 
@@ -130,3 +117,7 @@ dmypy.json
 
 # Ruff
 .ruff_cache/
+
+# JetBrains IDEs
+.idea/
+.junie/memory/
