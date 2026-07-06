@@ -1,9 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = [
-  "setuptools>=77",
-  "wheel",
-]
+requires = [ "setuptools>=77" ]
 
 [project]
 name = "kaggle-sandbox"
@@ -130,8 +127,8 @@ ini_options.pythonpath = [
 ini_options.norecursedirs = [
   ".git",
   ".github",
-  "dist",
   "build",
+  "dist",
   "docs",
   "notebooks",
 ]
@@ -141,10 +138,10 @@ ini_options.addopts = [
   "--color=yes",
   "--disable-pytest-warnings",
 ]
+ini_options.xfail_strict = true
 ini_options.filterwarnings = [
   "error::FutureWarning",
 ]
-ini_options.xfail_strict = true
 ini_options.junit_duration_report = "call"
 
 [tool.coverage]
