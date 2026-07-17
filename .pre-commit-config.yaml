@@ -51,7 +51,7 @@ repos:
         name: Ruff/black formatter
 
   - repo: https://github.com/JoC0de/pre-commit-prettier
-    rev: v3.8.1
+    rev: v3.9.4
     hooks:
       - id: prettier
         files: \.(json|yml|yaml|toml)
@@ -59,7 +59,7 @@ repos:
         args: ["--print-width=120"]
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.21.0
+    rev: v2.25.1
     hooks:
       - id: pyproject-fmt
         additional_dependencies: [tox]
