@@ -53,7 +53,7 @@ dev = [
   "pytest>=8.4.2,<9.2",
   "pytest-cov>=7.1,<7.2",
   "ruff",
-  "twine>=6.2,<6.3",
+  "twine>=6.2,<7.1",
 ]
 test = [
   "pytest>=8.4.2,<9.2",
