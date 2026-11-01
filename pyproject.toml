@@ -51,13 +51,13 @@ dev = [
   "build",
   "check-manifest",
   "pre-commit",
-  "pytest>=8.4.2,<9.2",
+  "pytest>=8.4.2,<9.3",
   "pytest-cov>=7.1,<7.2",
   "ruff",
   "twine>=6.2,<7.1",
 ]
 test = [
-  "pytest>=8.4.2,<9.2",
+  "pytest>=8.4.2,<9.3",
   "pytest-cov>=7.1,<7.2",
 ]
 
